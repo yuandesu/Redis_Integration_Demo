@@ -1,41 +1,41 @@
 # Datadog Redis Integration Demo
 
-ÇçÀ§°ì¸Ä´°À°Åª Datadog çĞ Redis À°¹ç±é¼¨Õó°Æ¡¤Å¸¼¨Ç¡²¿ÚÀ½¸ Redis Åª metrics ÏÂ logs ÊÂâ¤Á÷Åş Datadog¡£
+é€™æ˜¯ä¸€å€‹å®Œæ•´çš„ Datadog èˆ‡ Redis æ•´åˆæ¼”ç¤ºå°ˆæ¡ˆï¼Œå±•ç¤ºå¦‚ä½•æ”¶é›† Redis çš„ metrics å’Œ logs ä¸¦ç™¼é€åˆ° Datadogã€‚
 
-## Õó°Æ·ë¹½
+## å°ˆæ¡ˆçµæ§‹
 
 ```
 Redis_Integration_Demo/
-¨§¨¡¨¡ app/
-¨¢   ¨§¨¡¨¡ app.py              # Python ØæÍÑÄø¼°¡¤Ï¢ÀÜ Redis ÊÂâ¤Á÷ metrics
-¨¢   ¨§¨¡¨¡ Dockerfile          # App ÍÆ´ï²½ÇÛÃÖ
-¨¢   ¨¦¨¡¨¡ requirements.txt    # Python °ÍûòÅå·ï
-¨§¨¡¨¡ datadog/
-¨¢   ¨§¨¡¨¡ Dockerfile          # Datadog Agent ÍÆ´ï²½ÇÛÃÖ
-¨¢   ¨¦¨¡¨¡ conf.d/
-¨¢       ¨¦¨¡¨¡ redisdb.yaml    # Redis À°¹çÇÛÃÖ
-¨§¨¡¨¡ docker-compose.yaml     # ÍÆ´ïÊÔÇÓÇÛÃÖ
-¨¦¨¡¨¡ README.md              # Õó°Æ?ÌÀÊ¸·ï
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ app.py              # Python æ‡‰ç”¨ç¨‹å¼ï¼Œé€£æ¥ Redis ä¸¦ç™¼é€ metrics
+â”‚   â”œâ”€â”€ Dockerfile          # App å®¹å™¨åŒ–é…ç½®
+â”‚   â””â”€â”€ requirements.txt    # Python ä¾è³´å¥—ä»¶
+â”œâ”€â”€ datadog/
+â”‚   â”œâ”€â”€ Dockerfile          # Datadog Agent å®¹å™¨åŒ–é…ç½®
+â”‚   â””â”€â”€ conf.d/
+â”‚       â””â”€â”€ redisdb.yaml    # Redis æ•´åˆé…ç½®
+â”œâ”€â”€ docker-compose.yaml     # å®¹å™¨ç·¨æ’é…ç½®
+â””â”€â”€ README.md   
 ```
 
-## ²Í¹½?ÌÀ
+## æ¶æ§‹
 
-### ÉşÌ³ÁÈÀ®
+### æœå‹™çµ„æˆ
 
 1. **Redis (redis:6)**
-   - Äó¶¡µ­²±ñó»ñÎÁ¸ËÉşÌ³
-   - ´ÆæåÃ¼¸ı 6379
+   - æä¾›è¨˜æ†¶é«”è³‡æ–™åº«æœå‹™
+   - ç›£è½ç«¯å£ 6379
 
 2. **Python App (app/)**
-   - Ï¢ÀÜ Redis ÊÂâ¤Á÷ metrics
-   - ? 5 ÉÃ¼¹¹Ô°ì¼¡ Redis Áàºî
-   - ¼«ÄêµÁ metrics â¤Á÷Åş Datadog
+   - é€£æ¥ Redis ä¸¦ç™¼é€ metrics
+   - æ¯ 5 ç§’åŸ·è¡Œä¸€æ¬¡ Redis æ“ä½œ
+   - è‡ªå®šç¾© metrics ç™¼é€åˆ° Datadog
 
 3. **Datadog Agent (datadog/)**
-   - ÚÀ½¸·ÏÅı metrics¡¢Redis metrics ÏÂ logs
-   - Õò»ñÎÁÑ£Á÷Åş Datadog Ê¿Âæ
+   - æ”¶é›†ç³»çµ± metricsã€Redis metrics å’Œ logs
+   - å°‡è³‡æ–™å‚³é€åˆ° Datadog å¹³å°
 
-### Docker Compose ÇÛÃÖ
+### Docker Compose é…ç½®
 
 ```yaml
 version: '3'
@@ -68,27 +68,27 @@ services:
       - redis
 ```
 
-## Metrics ÚÀ½¸µ¡À©
+## Metrics æ”¶é›†æ©Ÿåˆ¶
 
-### Datadog Agent ¼çÆ°ÚÀ½¸µ¡À©
+### Datadog Agent ä¸»å‹•æ”¶é›†æ©Ÿåˆ¶
 
-Datadog Agent ºÎÍÑ**¼çÆ°ÚÀ½¸¡ÊPull¡Ë**ÌÏ¼°ĞÔÚÀ½¸ Redis metrics ÏÂ logs¡£
+Datadog Agent æ¡ç”¨**ä¸»å‹•æ”¶é›†ï¼ˆPullï¼‰**æ¨¡å¼ä¾†æ”¶é›† Redis metrics å’Œ logsã€‚
 
-1. **Metrics ÚÀ½¸Î®Äø**
-   - Agent ? 15 ÉÃ¼çÆ°Ï¢ÀÜÅş Redis ÉşÌ³
-   - ¼¹¹Ô Redis INFO Ì¿Îá³Í¼è·ÏÅı»ñ¿Ö
-   - ²òÀÏ²óØæ?ÍÆÊÂíÛ´¹°Ù Datadog metrics ³Ê¼°
-   - Õò»ñÎÁÑ£Á÷Åş Datadog Ê¿Âæ
+1. **Metrics æ”¶é›†æµç¨‹**
+   - Agent æ¯ 15 ç§’ä¸»å‹•é€£æ¥åˆ° Redis æœå‹™
+   - åŸ·è¡Œ Redis INFO å‘½ä»¤ç²å–ç³»çµ±è³‡è¨Š
+   - è§£æå›æ‡‰å…§å®¹ä¸¦è½‰æ›ç‚º Datadog metrics æ ¼å¼
+   - å°‡è³‡æ–™å‚³é€åˆ° Datadog å¹³å°
 
-2. **Logs ÚÀ½¸Î®Äø**
-   - Agent Æ©²á Docker ÍÆ´ïÆü»ïÚÀ½¸
-   - Æ©²á Docker socket Â¸¼èÍÆ´ï logs
-   - º¬Ú¡ÇÛÃÖµ¬Â§²áßÉÏÂÑİÍı logs
-   - Õò»ñÎÁÑ£Á÷Åş Datadog Ê¿Âæ
+2. **Logs æ”¶é›†æµç¨‹**
+   - Agent é€é Docker å®¹å™¨æ—¥èªŒæ”¶é›†
+   - é€é Docker socket å­˜å–å®¹å™¨ logs
+   - æ ¹æ“šé…ç½®è¦å‰‡éæ¿¾å’Œè™•ç† logs
+   - å°‡è³‡æ–™å‚³é€åˆ° Datadog å¹³å°
 
-### Redis Integration ÇÛÃÖ
+### Redis Integration é…ç½®
 
-**ÇÛÃÖ?°Æ°ÌÃÖ¡§** `datadog/conf.d/redisdb.yaml`
+**é…ç½®æª”æ¡ˆä½ç½®ï¼š** `datadog/conf.d/redisdb.yaml`
 
 ```yaml
 init_config:
@@ -98,241 +98,241 @@ instances:
     port: 6379
 ```
 
-### ÇÛÃÖ?ÌÀ
+### é…ç½®èªªæ˜
 
-1. **Metrics ÚÀ½¸ÒÔÚË**
-   - `host: redis`¡§Agent ¼çÆ°Ï¢ÀÜÅªÉşÌ³Ì¾ãÊ
-   - `port: 6379`¡§Agent Ï¢ÀÜÅª Redis Ã¼¸ı
-   - Agent ĞòÄê´ü¼¹¹Ô `redis-cli info` Ì¿Îá³Í¼è·ÏÅı»ñ¿Ö
-   - ¼«Æ°²òÀÏ INFO ²óØæÊÂíÛ´¹°ÙÉ¸½à metrics
+1. **Metrics æ”¶é›†åƒæ•¸**
+   - `host: redis`ï¼šAgent ä¸»å‹•é€£æ¥çš„æœå‹™åç¨±
+   - `port: 6379`ï¼šAgent é€£æ¥çš„ Redis ç«¯å£
+   - Agent æœƒå®šæœŸåŸ·è¡Œ `redis-cli info` å‘½ä»¤ç²å–ç³»çµ±è³‡è¨Š
+   - è‡ªå‹•è§£æ INFO å›æ‡‰ä¸¦è½‰æ›ç‚ºæ¨™æº– metrics
 
-2. **¼çÆ°ÚÀ½¸Î®Äø**
+2. **ä¸»å‹•æ”¶é›†æµç¨‹**
    ```
-   Datadog Agent ¼¹¹Ô Redis INFO Ì¿Îá ¢ª ²òÀÏ²óØæ?ÍÆ ¢ª íÛ´¹°Ù Metrics ¢ª Ñ£Á÷Åş Datadog
+   Datadog Agent åŸ·è¡Œ Redis INFO å‘½ä»¤ â†’ è§£æå›æ‡‰å…§å®¹ â†’ è½‰æ›ç‚º Metrics â†’ å‚³é€åˆ° Datadog
    ```
 
-3. **ÚÀ½¸ÅşÅª Metrics ÈÏÎã**
-   - `redis.mem.used`¡§Redis µ­²±ñó»ÈÍÑÎÌ
-   - `redis.stats.total_commands_processed`¡§åÁÌ¿ÎáÑİÍıÚË
-   - `redis.stats.connected_clients`¡§Ï¢ÀÜµÒ?Ã¼ÚËÎÌ
-   - `redis.stats.keyspace_hits`¡§¸°¶õ´ÖÌ¿Ãæ¼¡ÚË
-   - `redis.stats.keyspace_misses`¡§¸°¶õ´ÖÌ¤Ì¿Ãæ¼¡ÚË
+3. **æ”¶é›†åˆ°çš„ Metrics ç¯„ä¾‹**
+   - `redis.mem.used`ï¼šRedis è¨˜æ†¶é«”ä½¿ç”¨é‡
+   - `redis.stats.total_commands_processed`ï¼šç¸½å‘½ä»¤è™•ç†æ•¸
+   - `redis.stats.connected_clients`ï¼šé€£æ¥å®¢æˆ¶ç«¯æ•¸é‡
+   - `redis.stats.keyspace_hits`ï¼šéµç©ºé–“å‘½ä¸­æ¬¡æ•¸
+   - `redis.stats.keyspace_misses`ï¼šéµç©ºé–“æœªå‘½ä¸­æ¬¡æ•¸
 
-### ¼«ÄêµÁ Metrics
+### è‡ªå®šç¾© Metrics
 
-**ÇÛÃÖ?°Æ°ÌÃÖ¡§** `app/app.py`
+**é…ç½®æª”æ¡ˆä½ç½®ï¼š** `app/app.py`
 
 ```python
-# ¼«ÄêµÁ metrics â¤Á÷Åş Datadog
+# è‡ªå®šç¾© metrics ç™¼é€åˆ° Datadog
 statsd.gauge("app.redis.page_views", count, tags=["env:yuan_env"])
 ```
 
-## Logs ÚÀ½¸µ¡À©
+## Logs æ”¶é›†æ©Ÿåˆ¶
 
-### Datadog Agent ÈïÆ°ÚÀ½¸ Logs
+### Datadog Agent è¢«å‹•æ”¶é›† Logs
 
-Agent Æ©²á°Ê²¼µ¡À©ÚÀ½¸ÍÆ´ï logs¡§
+Agent é€éä»¥ä¸‹æ©Ÿåˆ¶æ”¶é›†å®¹å™¨ logsï¼š
 
-1. **Docker Socket Â¸¼è**
-   - Agent ³İºÜ `/var/run/docker.sock` ĞÔÂ¸¼èÍÆ´ï»ñ¿Ö
-   - Ä¾ÀÜì¦¼èÍÆ´ïÅª stdout/stderr Í¢½Ğ
-   - ¼«Æ°¼±ÊÌÍÆ´ïÉ¸äŞÅª logs
+1. **Docker Socket å­˜å–**
+   - Agent æ›è¼‰ `/var/run/docker.sock` ä¾†å­˜å–å®¹å™¨è³‡è¨Š
+   - ç›´æ¥è®€å–å®¹å™¨çš„ stdout/stderr è¼¸å‡º
+   - è‡ªå‹•è­˜åˆ¥å®¹å™¨æ¨™ç±¤çš„ logs
 
-2. **ÍÆ´ï Logs ÚÀ½¸Î®Äø**
+2. **å®¹å™¨ Logs æ”¶é›†æµç¨‹**
    ```
-   Redis ÍÆ´ïÅª stdout/stderr ¢ª Docker daemon ¢ª Agent ì¦¼è ¢ª Ñ£Á÷Åş Datadog
+   Redis å®¹å™¨çš„ stdout/stderr â†’ Docker daemon â†’ Agent è®€å– â†’ å‚³é€åˆ° Datadog
    ```
 
-### ´Ä¶­ÚÎÚËÇÛÃÖ
+### ç’°å¢ƒè®Šæ•¸é…ç½®
 
-ºß `docker-compose.yaml` Ãæ¡§
+åœ¨ `docker-compose.yaml` ä¸­ï¼š
 
 ```yaml
 environment:
-  - DD_LOGS_ENABLED=true                           # ?ÍÑ logs ÚÀ½¸
-  - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true     # ÚÀ½¸½êÍ­ÍÆ´ï logs
+  - DD_LOGS_ENABLED=true                           # å•Ÿç”¨ logs æ”¶é›†
+  - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true     # æ”¶é›†æ‰€æœ‰å®¹å™¨ logs
 ```
 
-## Áàºî»ØÆî
+## æ“ä½œæŒ‡å—
 
-### 1. ?Æ°ÉşÌ³
+### 1. å•Ÿå‹•æœå‹™
 
 ```bash
-# ?Æ°½êÍ­ÉşÌ³
+# å•Ÿå‹•æ‰€æœ‰æœå‹™
 docker-compose up -d
 
-# ½Å¿··ú¹½ÊÂ?Æ°ÉşÌ³
+# é‡æ–°å»ºæ§‹ä¸¦å•Ÿå‹•æœå‹™
 docker-compose up --build -d
 
-# ?´ÇÉşÌ³?ÂÖ
+# æŸ¥çœ‹æœå‹™ç‹€æ…‹
 docker-compose ps
 ```
 
-### 2. Üı? Datadog Agent ÍÆ´ï
+### 2. æª¢æŸ¥ Datadog Agent å®¹å™¨
 
 ```bash
-# ¿ÊÆş agent ÍÆ´ï
+# é€²å…¥ agent å®¹å™¨
 docker exec -it datadog-agent /bin/bash
 
-# ?´Ç agent ?ÂÖ
+# æŸ¥çœ‹ agent ç‹€æ…‹
 docker exec -it datadog-agent agent status
 
-# ?´Ç Redis integration ?ÂÖ
+# æŸ¥çœ‹ Redis integration ç‹€æ…‹
 docker exec -it datadog-agent agent status | grep -A 20 "redisdb"
 ```
 
-### 3. Â¬»î Redis Integration
+### 3. æ¸¬è©¦ Redis Integration
 
 ```bash
-# Â¬»î Redis integration ¸ùÇ½¡ÊÜı? Agent ¼çÆ°ÚÀ½¸À§ÈİÀµ¾ï¡Ë
+# æ¸¬è©¦ Redis integration åŠŸèƒ½ï¼ˆæª¢æŸ¥ Agent ä¸»å‹•æ”¶é›†æ˜¯å¦æ­£å¸¸ï¼‰
 docker exec -it datadog-agent agent check redisdb
 
-# ?´Ç Redis metrics ÚÀ½¸?ÂÖ¡ÊÜı?À§ÈİÍ­ºø¸í¿ÖÂ©¡Ë
+# æŸ¥çœ‹ Redis metrics æ”¶é›†ç‹€æ…‹ï¼ˆæª¢æŸ¥æ˜¯å¦æœ‰éŒ¯èª¤è¨Šæ¯ï¼‰
 docker exec -it datadog-agent agent status | grep -A 15 "redisdb"
 
-# ?´Ç logs ÚÀ½¸?ÂÖ¡ÊÜı?À§ÈİÍ­ì¦¼èºø¸í¡Ë
+# æŸ¥çœ‹ logs æ”¶é›†ç‹€æ…‹ï¼ˆæª¢æŸ¥æ˜¯å¦æœ‰è®€å–éŒ¯èª¤ï¼‰
 docker exec -it datadog-agent agent status | grep -A 20 "Logs Agent"
 
-# ?´Ç Agent ¼çÆ°ÚÀ½¸Åª¾ÜºÙ»ñ¿Ö
+# æŸ¥çœ‹ Agent ä¸»å‹•æ”¶é›†çš„è©³ç´°è³‡è¨Š
 docker exec -it datadog-agent agent check redisdb --verbose
 
-# Â¬»î Agent çĞ Redis Ï¢ÀÜ¡ÊÜı?ÌÖÏ©Ï¢ÀÜÀ§ÈİÀµ¾ï¡Ë
+# æ¸¬è©¦ Agent èˆ‡ Redis é€£æ¥ï¼ˆæª¢æŸ¥ç¶²è·¯é€£æ¥æ˜¯å¦æ­£å¸¸ï¼‰
 docker exec -it datadog-agent ping redis
 ```
 
-### 4. ?´ÇÍÆ´ï Logs
+### 4. æŸ¥çœ‹å®¹å™¨ Logs
 
 ```bash
-# ?´Ç Redis ÍÆ´ï logs
+# æŸ¥çœ‹ Redis å®¹å™¨ logs
 docker logs integration_demo-redis-1 --tail 20
 
-# ?´Ç App ÍÆ´ï logs
+# æŸ¥çœ‹ App å®¹å™¨ logs
 docker logs integration_demo-app-1 --tail 20
 
-# ?´Ç Datadog Agent logs
+# æŸ¥çœ‹ Datadog Agent logs
 docker logs datadog-agent --tail 20
 
-# ?´ÇÍÆ´ïÁêïğÅª logs
+# æŸ¥çœ‹å®¹å™¨ç›¸é—œçš„ logs
 docker logs datadog-agent | grep -i redis
 ```
 
-### 5. Â¬»î Redis Ï¢ÀÜ
+### 5. æ¸¬è©¦ Redis é€£æ¥
 
 ```bash
-# ¿ÊÆş Redis ÍÆ´ï
+# é€²å…¥ Redis å®¹å™¨
 docker exec -it integration_demo-redis-1 /bin/bash
 
-# »ÈÍÑ redis-cli Â¬»î
+# ä½¿ç”¨ redis-cli æ¸¬è©¦
 docker exec -it integration_demo-redis-1 redis-cli ping
 docker exec -it integration_demo-redis-1 redis-cli info memory
 docker exec -it integration_demo-redis-1 redis-cli monitor
 ```
 
-### 6. Â¬»î App ¸ùÇ½
+### 6. æ¸¬è©¦ App åŠŸèƒ½
 
 ```bash
-# ¿ÊÆş App ÍÆ´ï
+# é€²å…¥ App å®¹å™¨
 docker exec -it integration_demo-app-1 /bin/bash
 
-# ¼êÆ°¼¹¹Ô app.py
+# æ‰‹å‹•åŸ·è¡Œ app.py
 docker exec -it integration_demo-app-1 python app.py
 
-# Â¬»î Python Åå·ï
+# æ¸¬è©¦ Python å¥—ä»¶
 docker exec -it integration_demo-app-1 python -c "import redis; print('Redis OK')"
 docker exec -it integration_demo-app-1 python -c "from datadog import initialize, statsd; print('Datadog OK')"
 ```
 
-### 7. ½Å?ÉşÌ³
+### 7. é‡å•Ÿæœå‹™
 
 ```bash
-# ½Å?ÆÃÄêÉşÌ³
+# é‡å•Ÿç‰¹å®šæœå‹™
 docker-compose restart redis
 docker-compose restart app
 docker-compose restart datadog-agent
 
-# ½Å?½êÍ­ÉşÌ³
+# é‡å•Ÿæ‰€æœ‰æœå‹™
 docker-compose restart
 ```
 
-### 8. À¶Íı´Ä¶­
+### 8. æ¸…ç†ç’°å¢ƒ
 
 ```bash
-# Ää»ßÊÂ°Ü½ü½êÍ­ÍÆ´ï
+# åœæ­¢ä¸¦ç§»é™¤æ‰€æœ‰å®¹å™¨
 docker-compose down
 
-# Ää»ßÊÂ°Ü½ü½êÍ­ÍÆ´ïÏÂÌÖÏ©
+# åœæ­¢ä¸¦ç§»é™¤æ‰€æœ‰å®¹å™¨å’Œç¶²è·¯
 docker-compose down --remove-orphans
 
-# À¶Íı½êÍ­ÁêïğÅª±ÇÁü?
+# æ¸…ç†æ‰€æœ‰ç›¸é—œçš„æ˜ åƒæª”
 docker-compose down --rmi all
 ```
 
-## ´Æ¹µÌÌÈÄ
+## ç›£æ§é¢æ¿
 
-### ºß Datadog Ê¿Âæ?´Ç»ñÎÁ
+### åœ¨ Datadog å¹³å°æŸ¥çœ‹è³‡æ–™
 
 1. **Metrics Explorer**
-   - ÙÓ¿Ò `redis.mem.used` ?´Çµ­²±ñó»ÈÍÑÎÌ
-   - ÙÓ¿Ò `app.redis.page_views` ?´Ç¼«ÄêµÁ metrics
-   - ÙÓ¿Ò `redis.stats.total_commands_processed` ?´ÇÌ¿ÎáÑİÍıÚË
+   - æœå°‹ `redis.mem.used` æŸ¥çœ‹è¨˜æ†¶é«”ä½¿ç”¨é‡
+   - æœå°‹ `app.redis.page_views` æŸ¥çœ‹è‡ªå®šç¾© metrics
+   - æœå°‹ `redis.stats.total_commands_processed` æŸ¥çœ‹å‘½ä»¤è™•ç†æ•¸
 
 2. **Logs**
-   - ÙÓ¿Ò `service:redis` ?´Ç Redis logs
-   - ÙÓ¿Ò `source:redis` ?´Ç Redis Áêïğ logs
+   - æœå°‹ `service:redis` æŸ¥çœ‹ Redis logs
+   - æœå°‹ `source:redis` æŸ¥çœ‹ Redis ç›¸é—œ logs
 
 3. **Infrastructure**
-   - ?´Ç Redis ÉşÌ³·ò¹¯?ÂÖ
-   - Üı? Datadog Agent Ï¢ÀÜ?ÂÖ
+   - æŸ¥çœ‹ Redis æœå‹™å¥åº·ç‹€æ…‹
+   - æª¢æŸ¥ Datadog Agent é€£æ¥ç‹€æ…‹
 
-### ¸Î¾ãÇÓ½ü»ØÆî
+### æ•…éšœæ’é™¤æŒ‡å—
 
-1. **Redis metrics ÌµË¡ÚÀ½¸¡ÊAgent ¼çÆ°ÚÀ½¸¼ºÇÔ¡Ë**
+1. **Redis metrics ç„¡æ³•æ”¶é›†ï¼ˆAgent ä¸»å‹•æ”¶é›†å¤±æ•—ï¼‰**
    ```bash
-   # Üı? Agent ¼çÆ°ÚÀ½¸À§ÈİÀµ¾ï
+   # æª¢æŸ¥ Agent ä¸»å‹•æ”¶é›†æ˜¯å¦æ­£å¸¸
    docker exec -it datadog-agent agent check redisdb
    
-   # Üı? Agent çĞ Redis ÅªÌÖÏ©Ï¢ÀÜ
+   # æª¢æŸ¥ Agent èˆ‡ Redis çš„ç¶²è·¯é€£æ¥
    docker exec -it datadog-agent ping redis
    
-   # Üı? Agent À§ÈİÇ½¼¹¹Ô Redis INFO Ì¿Îá
+   # æª¢æŸ¥ Agent æ˜¯å¦èƒ½åŸ·è¡Œ Redis INFO å‘½ä»¤
    docker exec -it datadog-agent redis-cli -h redis info
    
-   # ?´Ç Agent ¼çÆ°ÚÀ½¸Åª¾ÜºÙºø¸í¿ÖÂ©
+   # æŸ¥çœ‹ Agent ä¸»å‹•æ”¶é›†çš„è©³ç´°éŒ¯èª¤è¨Šæ¯
    docker exec -it datadog-agent agent check redisdb --verbose
    ```
 
-2. **Logs ÌµË¡ÚÀ½¸¡ÊAgent ÈïÆ°ÚÀ½¸¼ºÇÔ¡Ë**
+2. **Logs ç„¡æ³•æ”¶é›†ï¼ˆAgent è¢«å‹•æ”¶é›†å¤±æ•—ï¼‰**
    ```bash
-   # Üı? Agent ÈïÆ°ÚÀ½¸?ÂÖ
+   # æª¢æŸ¥ Agent è¢«å‹•æ”¶é›†ç‹€æ…‹
    docker exec -it datadog-agent agent status | grep -A 20 "Logs Agent"
    
-   # Üı? Docker socket À§ÈİÀµ³Î³İºÜ
+   # æª¢æŸ¥ Docker socket æ˜¯å¦æ­£ç¢ºæ›è¼‰
    docker exec -it datadog-agent ls -la /var/run/docker.sock
    
-   # Üı?ÍÆ´ï logs À§ÈİÍ­Í¢½Ğ
+   # æª¢æŸ¥å®¹å™¨ logs æ˜¯å¦æœ‰è¼¸å‡º
    docker logs integration_demo-redis-1
    
-   # Üı? Agent À§ÈİÇ½ì¦¼èÅşÍÆ´ïÅª logs
+   # æª¢æŸ¥ Agent æ˜¯å¦èƒ½è®€å–åˆ°å®¹å™¨çš„ logs
    docker exec -it datadog-agent agent status | grep "Logs Agent"
    ```
 
-3. **Agent Ï¢ÀÜÌäÂê**
+3. **Agent é€£æ¥å•é¡Œ**
    ```bash
-   # Üı? API key À§ÈİÀµ³ÎÀßÄê
+   # æª¢æŸ¥ API key æ˜¯å¦æ­£ç¢ºè¨­å®š
    docker logs datadog-agent | grep -i "api key"
    
-   # Üı? Agent çĞ Datadog Ê¿ÂæÅªÏ¢ÀÜ
+   # æª¢æŸ¥ Agent èˆ‡ Datadog å¹³å°çš„é€£æ¥
    docker exec -it datadog-agent ping app.datadoghq.com
    
-   # Üı? Agent ÇÛÃÖ?°Æ
+   # æª¢æŸ¥ Agent é…ç½®æª”æ¡ˆ
    docker exec -it datadog-agent cat /etc/datadog-agent/datadog.yaml
    ```
 
-## ¿Ê³¬ÇÛÃÖ
+## é€²éšé…ç½®
 
-### ¼«ÄêµÁ Redis ÇÛÃÖ
+### è‡ªå®šç¾© Redis é…ç½®
 
-²Ä°Ê½¤²ş `docker-compose.yaml`¡§
+å¯ä»¥ä¿®æ”¹ `docker-compose.yaml`ï¼š
 
 ```yaml
 redis:
@@ -342,9 +342,9 @@ redis:
     - REDIS_PASSWORD=your_password
 ```
 
-### ¼«ÄêµÁ Datadog Agent ÇÛÃÖ
+### è‡ªå®šç¾© Datadog Agent é…ç½®
 
-ºß `datadog/Dockerfile` ÃæÅº²Ã¼«ÄêµÁÇÛÃÖ¡§
+åœ¨ `datadog/Dockerfile` ä¸­æ·»åŠ è‡ªå®šç¾©é…ç½®ï¼š
 
 ```dockerfile
 FROM gcr.io/datadoghq/agent:latest
@@ -352,32 +352,32 @@ COPY conf.d/redisdb.yaml /etc/datadog-agent/conf.d/redisdb.yaml
 COPY datadog.yaml /etc/datadog-agent/datadog.yaml
 ```
 
-### Agent ¼çÆ°ÚÀ½¸ÉÑÎ¨Ä´À°
+### Agent ä¸»å‹•æ”¶é›†é »ç‡èª¿æ•´
 
-²Ä°ÊÄ´À°´Ä¶­ÚÎÚËĞÔ¹µÀ© Agent ¼çÆ°ÚÀ½¸ÅªÉÑÎ¨¡§
+å¯ä»¥èª¿æ•´ç’°å¢ƒè®Šæ•¸ä¾†æ§åˆ¶ Agent ä¸»å‹•æ”¶é›†çš„é »ç‡ï¼š
 
 ```yaml
 environment:
   - DD_LOGS_CONFIG_PROCESSING_ENABLED=true
   - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
-  # Ä´À° metrics ÚÀ½¸ÉÑÎ¨¡ÊÉÃ¡Ë
+  # èª¿æ•´ metrics æ”¶é›†é »ç‡ï¼ˆç§’ï¼‰
   - DD_LOGS_CONFIG_PROCESSING_TIMEOUT=10
 ```
 
-## Ãí°Õ»ö¹à
+## æ³¨æ„äº‹é …
 
-1. **API Key °ÂÁ´À­**
-   - ÀÁ³ÎÊİ `DD_API_KEY` ´Ä¶­ÚÎÚËÀßÄê°ÙÍ­ÚÃÅª Datadog API Key
-   - ·úµÄ»ÈÍÑ Docker secrets °¿´Ä¶­ÚÎÚË?°Æ
+1. **API Key å®‰å…¨æ€§**
+   - è«‹ç¢ºä¿ `DD_API_KEY` ç’°å¢ƒè®Šæ•¸è¨­å®šç‚ºæœ‰æ•ˆçš„ Datadog API Key
+   - å»ºè­°ä½¿ç”¨ Docker secrets æˆ–ç’°å¢ƒè®Šæ•¸æª”æ¡ˆ
 
-2. **ÌÖÏ©Ï¢ÀÜ**
-   - ³ÎÊİÍÆ´ï´ÖÅªÌÖÏ©Ï¢ÀÜÀµ¾ï
-   - Üı?ËÉ²Ğà¯ÀßÄê
+2. **ç¶²è·¯é€£æ¥**
+   - ç¢ºä¿å®¹å™¨é–“çš„ç¶²è·¯é€£æ¥æ­£å¸¸
+   - æª¢æŸ¥é˜²ç«ç‰†è¨­å®š
 
-3. **»ñ¸»»ÈÍÑ**
-   - ´Æ¹µÍÆ´ï»ñ¸»»ÈÍÑ¾ğ¶·
-   - Å¬áÄÄ´À°µ­²±ñóÏÂ CPU ¸ÂÀ©
+3. **è³‡æºä½¿ç”¨**
+   - ç›£æ§å®¹å™¨è³‡æºä½¿ç”¨æƒ…æ³
+   - é©ç•¶èª¿æ•´è¨˜æ†¶é«”å’Œ CPU é™åˆ¶
 
-4. **»ñÎÁÊİÎ±**
-   - Datadog Ê¿ÂæÍ­»ñÎÁÊİÎ±´ü¸Â
-   - Ãí°Õ logs ÌÙÂ¸À®ËÜ
+4. **è³‡æ–™ä¿ç•™**
+   - Datadog å¹³å°æœ‰è³‡æ–™ä¿ç•™æœŸé™
+   - æ³¨æ„ logs å„²å­˜æˆæœ¬
